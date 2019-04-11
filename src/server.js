@@ -11,7 +11,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 io.on("connection", socket => {
-    socket.on('conncetRoom', box => {
+    socket.on('connectRoom', box => {
         socket.join(box);
     })
 });
@@ -23,7 +23,7 @@ mongoose.connect('mongodb+srv://evandro:evandro@cluster0-kaxws.mongodb.net/datab
 app.use((req, res, next) => {
     req.io = io;
 
-    return next;
+    return next();
 });
 
 app.use(express.json());
